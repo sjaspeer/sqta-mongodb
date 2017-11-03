@@ -38,7 +38,7 @@ app.get('/', (req,res)=>{
 });
 
 
-app.post('login',(req,res)=> {
+app.post('/login',(req,res)=> {
 	var email = req.body.email;
 	var password = req.body.password;
 
@@ -58,7 +58,7 @@ app.post('login',(req,res)=> {
 	});
 });
 
-app.post('signup', (req, res) => {
+app.post('/signup', (req, res) => {
 	const newAccount = {
 		"name": req.body.name,
 		"Lname": req.body.Lname,
