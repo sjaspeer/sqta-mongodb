@@ -39,7 +39,7 @@ app.get('/', (req,res)=>{
 
 
 app.post('/login',(req,res)=> {
-	var username = req.body.username;
+	var email = req.body.email;
 	var password = req.body.password;
 
 	Accounts.findOne({email: email, password: password},(err,user)=>{
@@ -49,7 +49,7 @@ app.post('/login',(req,res)=> {
 		}
 		
 		if(!user){
-			console.log("Invalid Username or Password");
+			console.log("Invalid Email or Password");
 			return res.send('LOGIN FAILED');
 
 		}
