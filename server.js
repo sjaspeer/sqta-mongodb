@@ -10,8 +10,8 @@ const dotenv = require('dotenv').config();
 mongoose.Promise = global.Promise;
 const accountSchema = new mongoose.Schema({
 	name: 'string',	
-	Lname: 'string',	
 	email: 'string',
+	username: 'string',
 	password: 'string'
 });
 const uri = "mongodb://admin:admin@ds243345.mlab.com:43345/sqta-mongodb";
@@ -39,17 +39,17 @@ app.get('/', (req,res)=>{
 
 
 app.post('/login',(req,res)=> {
-	var email = req.body.email;
+	var username = req.body.username;
 	var password = req.body.password;
 
-	Accounts.findOne({email: email, password: password},(err,user)=>{
+	Accounts.findOne({username: username, password: password},(err,user)=>{
 		if(err){
 			console.log(err);
 			return res.status(500);
 		}
 		
 		if(!user){
-			console.log("Invalid Email or Password");
+			console.log("Invalid Username or Password");
 			return res.send('LOGIN FAILED');
 
 		}
@@ -58,11 +58,11 @@ app.post('/login',(req,res)=> {
 	});
 });
 
-app.post('/signup', (req, res) => {
+app.post('/accounts', (req, res) => {
 	const newAccount = {
 		"name": req.body.name,
-		"Lname": req.body.Lname,
 		"email": req.body.email,
+		"username": req.body.username,
 		"password": req.body.password
 	};
 	const callback = (err, data)=>{
