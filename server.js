@@ -12,7 +12,6 @@ const accountSchema = new mongoose.Schema({
 	name: 'string',	
 	Lname: 'string',	
 	email: 'string',
-	username: 'string',
 	password: 'string'
 });
 const uri = "mongodb://admin:admin@ds243345.mlab.com:43345/sqta-mongodb";
@@ -43,7 +42,7 @@ app.post('/login',(req,res)=> {
 	var username = req.body.username;
 	var password = req.body.password;
 
-	Accounts.findOne({username: username, password: password},(err,user)=>{
+	Accounts.findOne({email: email, password: password},(err,user)=>{
 		if(err){
 			console.log(err);
 			return res.status(500);
@@ -64,7 +63,6 @@ app.post('/accounts', (req, res) => {
 		"name": req.body.name,
 		"Lname": req.body.Lname,
 		"email": req.body.email,
-		"username": req.body.username,
 		"password": req.body.password
 	};
 	const callback = (err, data)=>{
