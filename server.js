@@ -14,7 +14,7 @@ const accountSchema = new mongoose.Schema({
 	username: 'string',
 	password: 'string'
 });
-const uri = "mongodb://admin:admin123@ds155674.mlab.com:55674/demodb04";
+const uri = "mongodb://admin:admin@ds243345.mlab.com:43345/sqta-mongodb";
 
 const options = {
 	useMongoClient: true,
