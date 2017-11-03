@@ -9,7 +9,6 @@ const dotenv = require('dotenv').config();
 
 mongoose.Promise = global.Promise;
 const accountSchema = new mongoose.Schema({
-	name: 'string',	
 	email: 'string',
 	username: 'string',
 	password: 'string'
@@ -60,7 +59,6 @@ app.post('/login',(req,res)=> {
 
 app.post('/accounts', (req, res) => {
 	const newAccount = {
-		"name": req.body.name,
 		"email": req.body.email,
 		"username": req.body.username,
 		"password": req.body.password
